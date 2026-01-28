@@ -1,4 +1,4 @@
-name: CI - Flask SocketIO App Build
+name: CI - Flask App Build
 
 on:
   push:
