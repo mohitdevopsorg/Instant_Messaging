@@ -4,3 +4,4 @@ eventlet
 flask-pymongo
 pymongo
 passlib
+flask-mail
