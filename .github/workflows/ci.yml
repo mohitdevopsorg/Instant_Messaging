@@ -1,0 +1,44 @@
+name: CI - Flask App Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build & Validate Flask App
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout source code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flask
+
+      # Step 4: Python syntax check
+      - name: Python syntax check
+        run: |
+          python -m py_compile app.py
+
+      # Step 5: Flask app import check
+      - name: Flask app startup validation
+        run: |
+          python - <<EOF
+          import app
+          print("Flask app imported successfully")
+          EOF
