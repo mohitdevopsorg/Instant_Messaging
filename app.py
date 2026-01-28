@@ -5,6 +5,7 @@ from time import localtime, strftime, time
 from passlib.hash import pbkdf2_sha256
 from flask_mail import Message, Mail
 from bson.json_util import dumps, loads
+import os
 # import additional
 
 current_user = "test"
@@ -12,7 +13,8 @@ current_user = "test"
 app = Flask(__name__)
 
 #  Contact Us:
-file = open("credentials.txt", "r")
+
+CREDENTIALS = os.getenv("CREDENTIALS")
 own_email = file.readline().strip()
 own_password = file.readline().strip()
 file.close()
