@@ -13,6 +13,10 @@ jobs:
     name: Build & Validate Flask App
     runs-on: ubuntu-latest
 
+    env:
+      
+      CREDENTIALS: "ci_dummy_credentials"
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
